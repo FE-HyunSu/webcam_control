@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <title>Webcam KIMHYUNSU</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/common.css" />
+    <script src="js/common.js"></script>
+  </head>
+  <body>
+    <header>
+      <p id="headerIntro">안녕하세요. <em>김현수</em> 입니다.</p>
+    </header>
+    <article>
+      <section class="section-homework">
+        <div class="screen-box type-ready" id="screenBox">
+          <video id="screenVideo" autoplay="true"></video>
+          <div class="screen-item">
+            <canvas id="screenCanvas" width="640" height="480"></canvas
+            ><strong class="user-name"></strong
+            ><button type="button" class="btn-audio active" id="btnAudio" onclick="audioToggle();">
+              <span>Audio</span>
+            </button>
+          </div>
+          <div class="screen-item">
+            <canvas id="screenCanvasCopy" width="640" height="480"></canvas
+            ><strong class="user-name"></strong>
+          </div>
+          <button type="button" class="btn-restart" onclick="webCamStart('screenCanvas');">
+            재시도
+          </button>
+        </div>
+        <div class="join-box" id="joinBox">
+          <input
+            type="text"
+            placeholder="이름을 입력해 주세요."
+            id="userName"
+            maxlength="20"
+            onkeyup="validationName();"
+          />
+          <button type="button" class="btn-join" onclick="login();">입장하기</button>
+        </div>
+        <div class="edit-box" id="editBox">
+          <dl>
+            <dt>캡처영역 (캡처 버튼 클릭 시 해당 영역에 표시됩니다)</dt>
+            <dd id="captureBox"></dd>
+          </dl>
+        </div>
+      </section>
+    </article>
+    <footer>
+      <p>copyright &copy; KIMHYUNSU, All rights reserved.</p>
+    </footer>
+    <script>
+      // 페이지 로드 시 webCam을 실행하고, localStorage의 userName 에 저장된 이름값이 존재한다면, 로그인 처리를 적용합니다.
+      window.addEventListener('load', () => {
+        webCamStart('#screenCanvas');
+        if (localStorage.getItem('userName')) setUser();
+      });
+    </script>
+  </body>
+</html>
