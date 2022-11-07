@@ -1,7 +1,7 @@
 // 기본 설정
 const express = require('express');
 const app = express();
-const PORT = 9090;
+const PORT = 3000;
 
 // public 설정
 app.use(express.static(__dirname + '/public'));
